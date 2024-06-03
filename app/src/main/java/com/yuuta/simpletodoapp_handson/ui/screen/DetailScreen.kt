@@ -19,6 +19,7 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -54,6 +55,7 @@ fun DetailScreen(
     ) {
        Column(
            modifier = Modifier.padding(it)
+               .padding(16.dp)
        ) {
            Row {
                Text(
@@ -63,8 +65,9 @@ fun DetailScreen(
                )
                Checkbox(checked = todo.isDone, onCheckedChange = { updateTodo(todo.copy(isDone = it)) })
            }
+           Spacer(modifier = Modifier.padding(16.dp))
            Row(horizontalArrangement = Arrangement.End) {
-               Button(onClick = {navigateToMain()}) {
+               ElevatedButton(onClick = {navigateToMain()}) {
                    Text("メイン画面に戻る")
                }
                Text("ステータス：　${if(todo.isDone) "完了" else "未完了"}")
