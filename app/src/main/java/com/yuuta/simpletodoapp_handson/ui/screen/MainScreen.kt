@@ -1,7 +1,6 @@
 package com.yuuta.simpletodoapp_handson.ui.screen
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -56,32 +55,19 @@ fun MainScreen(
         },
         modifier = modifier
     ) {
-        Box(modifier = Modifier.padding(it)) {
-            LazyColumn(
-                state = lazyListState,
-            ) {
-                items(todoList, key = { it.id }) { todo ->
-                    TodoItem(
-                        todo = todo,
-                        onTapItem = {
-                            navigateToDetail(it)
-                        },
-                        onRemove = onRemove
-                    )
-                }
+        LazyColumn(
+            modifier = Modifier.padding(it),
+            state = lazyListState,
+        ) {
+            items(todoList, key = { it.id }) { todo ->
+                TodoItem(
+                    todo = todo,
+                    onTapItem = {
+                        navigateToDetail(it)
+                    },
+                    onRemove = onRemove
+                )
             }
-
-        }
-        if (isAddTodoDialogShown) {
-            AddTodoDialog(
-                onAddTodo = {
-                    onAddTodo(Todo(text = it))
-                    isAddTodoDialogShown = false
-                },
-                onDismissRequest = {
-                    isAddTodoDialogShown = false
-                }
-            )
         }
     }
 }
