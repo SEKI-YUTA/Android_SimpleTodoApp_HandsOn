@@ -71,17 +71,17 @@ fun MainScreen(
                 }
             }
 
-            if (isAddTodoDialogShown) {
-                AddTodoDialog(
-                    onAddTodo = {
-                        onAddTodo(Todo(text = it))
-                        isAddTodoDialogShown = false
-                    },
-                    onDismissRequest = {
-                        isAddTodoDialogShown = false
-                    }
-                )
-            }
+        }
+        if (isAddTodoDialogShown) {
+            AddTodoDialog(
+                onAddTodo = {
+                    onAddTodo(Todo(text = it))
+                    isAddTodoDialogShown = false
+                },
+                onDismissRequest = {
+                    isAddTodoDialogShown = false
+                }
+            )
         }
     }
 }
