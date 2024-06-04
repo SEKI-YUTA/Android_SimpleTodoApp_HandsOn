@@ -46,14 +46,14 @@ fun MainScreen(
         mutableStateOf(false)
     }
     Scaffold(
+        modifier = modifier,
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 isAddTodoDialogShown = true
             }) {
                 Icon(imageVector = Icons.Rounded.Add, contentDescription = "Add Todo")
             }
-        },
-        modifier = modifier
+        }
     ) {
         LazyColumn(
             modifier = Modifier.padding(it),
@@ -68,17 +68,6 @@ fun MainScreen(
                     onRemove = onRemove
                 )
             }
-        }
-        if (isAddTodoDialogShown) {
-            AddTodoDialog(
-                onAddTodo = {
-                    onAddTodo(Todo(text = it))
-                    isAddTodoDialogShown = false
-                },
-                onDismissRequest = {
-                    isAddTodoDialogShown = false
-                }
-            )
         }
     }
 }
