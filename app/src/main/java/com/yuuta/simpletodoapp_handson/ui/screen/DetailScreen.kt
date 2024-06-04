@@ -59,7 +59,9 @@ fun DetailScreen(
        ) {
            Row {
                Text(
-                   modifier = Modifier.padding(bottom = 16.dp),
+                   modifier = Modifier
+                       .padding(bottom = 16.dp)
+                       .weight(1f),
                    text = todo.text,
                    style = TextStyle(fontSize = 30.sp),
                )
