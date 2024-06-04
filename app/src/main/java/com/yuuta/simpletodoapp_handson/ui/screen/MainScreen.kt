@@ -63,7 +63,7 @@ fun MainScreen(
                 TodoItem(
                     todo = todo,
                     onTapItem = {
-                        navigateToDetail(it)
+                        navigateToDetail(todo)
                     },
                     onRemove = onRemove
                 )
@@ -87,7 +87,7 @@ fun MainScreen(
 fun LazyItemScope.TodoItem(
     modifier: Modifier = Modifier,
     todo: Todo,
-    onTapItem: (Todo) -> Unit,
+    onTapItem: () -> Unit,
     onRemove: (todo: Todo) -> Unit,
 ) {
     Card(
@@ -95,7 +95,7 @@ fun LazyItemScope.TodoItem(
             .padding(8.dp)
             .animateItem()
             .clickable {
-                onTapItem(todo)
+                onTapItem()
             }
     ) {
         Row(
