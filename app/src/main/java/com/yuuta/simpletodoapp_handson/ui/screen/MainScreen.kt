@@ -39,7 +39,7 @@ fun MainScreen(
     navigateToDetail: (Todo) -> Unit,
     todoList: List<Todo>,
     onAddTodo: (Todo) -> Unit,
-    onRemove: (todo: Todo) -> Unit,
+    onRemove: (Todo) -> Unit,
 ) {
     val lazyListState = rememberLazyListState()
     var isAddTodoDialogShown by remember {
@@ -70,21 +70,6 @@ fun MainScreen(
             }
         }
     }
-    if (isAddTodoDialogShown) {
-        AddTodoDialog(
-            onAddTodo = {
-                onAddTodo(
-                    Todo(
-                        text = it
-                    )
-                )
-                isAddTodoDialogShown = false
-            },
-            onDismissRequest = {
-                isAddTodoDialogShown = false
-            }
-        )
-    }
 }
 
 @Composable
@@ -92,7 +77,7 @@ fun LazyItemScope.TodoItem(
     modifier: Modifier = Modifier,
     todo: Todo,
     onTapItem: () -> Unit,
-    onRemove: (todo: Todo) -> Unit,
+    onRemove: (Todo) -> Unit,
 ) {
     Card(
         modifier = modifier
